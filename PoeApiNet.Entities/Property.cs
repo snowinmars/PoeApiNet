@@ -17,6 +17,6 @@ namespace PoeApiNet.Entities
 		public IEnumerable<int> Values { get; }
 		public int DisplayMode { get; set; }
 		public int Type { get; set; }
-		public int Progress { get; set; }
+		public double Progress { get; set; }
 	}
 }
