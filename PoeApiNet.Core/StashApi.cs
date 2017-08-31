@@ -4538,6 +4538,11 @@ namespace PoeApiNet.Core
 		public IEnumerable<Stash> GetStashes()
 		{
 			var a = JsonConvert.DeserializeObject<InternalResult>(json);
+
+			var i = a.stashes.ElementAt(3).items.ElementAt(4);
+
+			Mapper.Map(i.properties.ElementAt(2));
+
 			return null;
 		}
 	}

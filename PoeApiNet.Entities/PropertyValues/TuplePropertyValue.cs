@@ -5,14 +5,51 @@ namespace PoeApiNet.Entities
 {
 	public class TuplePropertyValue : PropertyValue
 	{
+		private FlatPropertyValue leftPropertyValue;
+		private FlatPropertyValue rightPropertyValue;
+
 		public TuplePropertyValue() : base(Dimension.Tuple)
 		{
-			this.InitSides();
 		}
 
-		public FlatPropertyValue LeftPropertyValue { get; set; }
+		public FlatPropertyValue LeftPropertyValue
+		{
+			get
+			{
+				this.EnsureSidesWereCalculated();
 
-		public FlatPropertyValue RightPropertyValue { get; set; }
+				return this.leftPropertyValue;
+			}
+
+			set { this.leftPropertyValue = value; }
+		}
+
+		public FlatPropertyValue RightPropertyValue
+		{
+			get
+			{
+				this.EnsureSidesWereCalculated();
+				return this.rightPropertyValue;
+			}
+
+			set { this.rightPropertyValue = value; }
+		}
+
+		public void RecalculateSides()
+		{
+			var (left, right) = this.ParseValues();
+			this.InitLeft(left);
+			this.InitRight(right);
+		}
+
+		private void EnsureSidesWereCalculated()
+		{
+			if (this.leftPropertyValue == null ||
+				this.rightPropertyValue == null)
+			{
+				this.RecalculateSides();
+			}
+		}
 
 		private void InitLeft(string left)
 		{
@@ -30,13 +67,6 @@ namespace PoeApiNet.Entities
 				Value = right,
 				ValueType = this.ValueType
 			};
-		}
-
-		private void InitSides()
-		{
-			var (left, right) = this.ParseValues();
-			this.InitLeft(left);
-			this.InitRight(right);
 		}
 
 		private (string left, string right) ParseValues()
