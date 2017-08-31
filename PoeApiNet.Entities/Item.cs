@@ -26,19 +26,19 @@ namespace PoeApiNet.Entities
 			this.CosmeticMods = new List<string>();
 		}
 
-		public IEnumerable<Property> AdditionalProperties { get; }
+		public IList<Property> AdditionalProperties { get; }
 		public string ArtFilename { get; set; }
-		public IEnumerable<string> CosmeticMods { get; }
-		public IEnumerable<string> CraftedMods { get; }
+		public IList<string> CosmeticMods { get; }
+		public IList<string> CraftedMods { get; }
 		public string DescriptionText { get; set; }
-		public IEnumerable<string> EnchantMods { get; }
-		public IEnumerable<string> ExplicitMods { get; }
-		public IEnumerable<string> FlavourText { get; }
+		public IList<string> EnchantMods { get; }
+		public IList<string> ExplicitMods { get; }
+		public IList<string> FlavourText { get; }
 		public FrameType FrameType { get; set; }
 		public int Height { get; set; }
 		public string Id { get; set; }
 		public string ImageHref { get; set; }
-		public IEnumerable<string> ImplicitMods { get; }
+		public IList<string> ImplicitMods { get; }
 		public string InventoryId { get; set; }
 		public bool IsCorrupted { get; set; }
 		public bool IsDuplicated { get; set; }
@@ -51,21 +51,21 @@ namespace PoeApiNet.Entities
 		public string League { get; set; }
 		public int MaxStackSize { get; set; }
 		public string Name { get; set; }
-		public IEnumerable<Requirement> NextLevelRequirements { get; }
+		public IList<Requirement> NextLevelRequirements { get; }
 		public string Note { get; set; }
 		public int PositionX { get; set; }
 		public int PositionY { get; set; }
-		public IEnumerable<Property> Properties { get; }
+		public IList<Property> Properties { get; }
 		public string ProphecyDifficultyText { get; set; }
 		public string ProphecyText { get; set; }
-		public IEnumerable<Requirement> Requirements { get; }
+		public IList<Requirement> Requirements { get; }
 		public string SecondaryDescriptionText { get; set; }
-		public IEnumerable<Item> SocketedItems { get; }
-		public IEnumerable<Socket> Sockets { get; }
+		public IList<Item> SocketedItems { get; }
+		public IList<Socket> Sockets { get; }
 		public int StackSize { get; set; }
 		public int TalismanTier { get; set; }
 		public string TypeLine { get; set; }
-		public IEnumerable<string> UtilityMods { get; }
+		public IList<string> UtilityMods { get; }
 		public int Weight { get; set; }
 	}
 }

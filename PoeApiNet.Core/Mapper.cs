@@ -2,11 +2,163 @@
 using PoeApiNet.Enums;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace PoeApiNet.Core
 {
 	internal static class Mapper
 	{
+		internal static Result Map(InternalResult internalResult)
+		{
+			Result result= new Result();
+
+			result.NextChangeId = internalResult.next_change_id;
+
+			foreach (var internalStash in internalResult.stashes)
+			{
+				result.Stashes.Add(Map(internalStash));
+			}
+
+			return result;
+		}
+
+		internal static Stash Map(InternalStash internalStash)
+		{
+			Stash stash = new Stash();
+
+			stash.AccountName = internalStash.accountName;
+			stash.Id = internalStash.id;
+			stash.IsPublic = internalStash.@public;
+			stash.LastCharacterName = internalStash.lastCharacterName;
+			stash.StashName = internalStash.stash;
+			stash.StashType = internalStash.stashType.ParseToStashType();
+
+			foreach (var internalItem in internalStash.items)
+			{
+				stash.Items.Add(Map(internalItem));
+			}
+
+			return stash;
+		}
+
+		internal static Item Map(InternalItem internalItem)
+		{
+			Item item = new Item();
+
+			item.ArtFilename = internalItem.artFilename;
+			item.DescriptionText = internalItem.descrText;
+			item.FrameType = (FrameType)internalItem.frameType;
+			item.Height = internalItem.h;
+			item.Id = internalItem.id;
+			item.ImageHref = internalItem.icon;
+			item.InventoryId = internalItem.inventoryId;
+			item.IsCorrupted = internalItem.corrupted;
+			item.IsDuplicated = internalItem.duplicated;
+			item.IsIdentified = internalItem.identified;
+			item.IsLockedToCharacter = internalItem.lockedToCharacter;
+			item.IsRelic = internalItem.isRelic;
+			item.IsSupport = internalItem.support;
+			item.IsVerified = internalItem.verified;
+			item.ItemLevel = internalItem.ilvl;
+			item.League = internalItem.league;
+			item.MaxStackSize = internalItem.maxStackSize;
+			item.Name = internalItem.name;
+			item.Note = internalItem.note;
+			item.PositionX = internalItem.x;
+			item.PositionY = internalItem.y;
+			item.ProphecyDifficultyText = internalItem.prophecyDiffText;
+			item.ProphecyText = internalItem.prophecyText;
+			item.SecondaryDescriptionText = internalItem.secDescrText;
+			item.StackSize = internalItem.stackSize;
+			item.TalismanTier = internalItem.talismanTier;
+			item.TypeLine = internalItem.typeLine;
+			item.Weight = internalItem.w;
+
+			foreach (var additionalProperty in internalItem.additionalProperties)
+			{
+				item.AdditionalProperties.Add(Map(additionalProperty));
+			}
+
+			foreach (var cosmeticMod in internalItem.cosmeticMods)
+			{
+				item.CosmeticMods.Add(cosmeticMod);
+			}
+
+			foreach (var craftedMod in item.CraftedMods)
+			{
+				item.CraftedMods.Add(craftedMod);
+			}
+
+			foreach (var enchantMod in internalItem.enchantMods)
+			{
+				item.EnchantMods.Add(enchantMod);
+			}
+
+			foreach (var explicitMod in internalItem.explicitMods)
+			{
+				item.ExplicitMods.Add(explicitMod);
+			}
+
+			foreach (var flavourText in internalItem.flavourText)
+			{
+				item.FlavourText.Add(flavourText);
+			}
+
+			foreach (var implicitMod in internalItem.implicitMods)
+			{
+				item.ImplicitMods.Add(implicitMod);
+			}
+
+			foreach (var nextLevelRequirement in internalItem.nextLevelRequirements)
+			{
+				item.NextLevelRequirements.Add(Map(nextLevelRequirement));
+			}
+
+			foreach (var property in internalItem.properties)
+			{
+				item.Properties.Add(Map(property));
+			}
+
+			foreach (var requirement in internalItem.requirements)
+			{
+				item.Requirements.Add(Map(requirement));
+			}
+
+			foreach (var socketedItem in internalItem.socketedItems)
+			{
+				item.SocketedItems.Add(Map(socketedItem));
+			}
+
+			foreach (var socket in internalItem.sockets)
+			{
+				item.Sockets.Add(Map(socket));
+			}
+
+			foreach (var utilityMod in internalItem.utilityMods)
+			{
+				item.UtilityMods.Add(utilityMod);
+			}
+
+			return item;
+		}
+
+		internal static Requirement Map(InternalRequirement internalRequirement)
+		{
+			Requirement requirement = new Requirement();
+
+			requirement.DisplayMode = internalRequirement.displayMode;
+			requirement.Name = internalRequirement.name;
+			requirement.Progress = internalRequirement.progress;
+			requirement.Type = (PropertyType)internalRequirement.type;
+
+			foreach (var valuePair in internalRequirement.values)
+			{
+				requirement.Values.Add(Mapper.Map(valuePair));
+			}
+
+			return requirement;
+		}
+
 		internal static Property Map(InternalProperty internalProperty)
 		{
 			Property property = new Property();

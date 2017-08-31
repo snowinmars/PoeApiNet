@@ -8,6 +8,27 @@ namespace PoeApiNet.Enums
 {
 	public static class EnumsExtension
 	{
+		public static StashType ParseToStashType(this string str)
+		{
+			switch (str)
+			{
+				case "NormalStash":
+					return StashType.Normal;
+				case "PremiumStash":
+					return StashType.Premium;
+				case "QuadStash":
+					return StashType.Quad;
+				case "EssenceStash":
+					return StashType.Essence;
+				case "CurrencyStash":
+					return StashType.Currency;
+				case "DivinationStash":
+					return StashType.Divination;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(str), str, null);
+			}
+		}
+
 		public static string AsString(this Dimension type)
 		{
 			switch (type)

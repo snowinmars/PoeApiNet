@@ -52,6 +52,7 @@
     <Compile Include="PropertyValues\TimePropertyValue.cs" />
     <Compile Include="PropertyValues\TuplePropertyValue.cs" />
     <Compile Include="Requirement.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="Socket.cs" />
     <Compile Include="Stash.cs" />
   </ItemGroup>

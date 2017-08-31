@@ -19,7 +19,7 @@ namespace PoeApiNet.Entities
 		public string Id { get; set; }
 		public string StashName { get; set; }
 		public StashType StashType { get; set; }
-		public IEnumerable<Item> Items { get; }
+		public IList<Item> Items { get; }
 		public bool IsPublic { get; set; }
 	}
 }

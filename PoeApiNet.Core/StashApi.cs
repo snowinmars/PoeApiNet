@@ -4535,15 +4535,12 @@ namespace PoeApiNet.Core
 
 		#endregion
 
-		public IEnumerable<Stash> GetStashes()
+		public Result GetStashes()
 		{
-			var a = JsonConvert.DeserializeObject<InternalResult>(json);
+			InternalResult a = JsonConvert.DeserializeObject<InternalResult>(json);
 
-			var i = a.stashes.ElementAt(3).items.ElementAt(4);
-
-			Mapper.Map(i.properties.ElementAt(2));
-
-			return null;
+			var stashes = Mapper.Map(a);
+			return stashes;
 		}
 	}
 }
