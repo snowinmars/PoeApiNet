@@ -8,6 +8,19 @@ namespace PoeApiNet.Enums
 {
 	public static class EnumsExtension
 	{
+		public static string AsString(this Dimension type)
+		{
+			switch (type)
+			{
+				case Dimension.No:
+					return "";
+				case Dimension.Percent:
+					return "%";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(type), type, null);
+			}
+		}
+
 		public static string AsString(this StashType type)
 		{
 			switch (type)

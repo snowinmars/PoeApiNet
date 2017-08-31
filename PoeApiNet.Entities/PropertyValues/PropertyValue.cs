@@ -7,10 +7,15 @@ using PoeApiNet.Enums;
 
 namespace PoeApiNet.Entities
 {
-	public class PropertyValue
+	public abstract class PropertyValue
 	{
+		protected PropertyValue(Dimension dimension)
+		{
+			this.Dimension = dimension;
+		}
+
 		public string Value { get; set; }
-		public int ValueTypes { get; set; }
-		public Dimension Dimension { get; set; }
+		public ValueTypes ValueType { get; set; }
+		public Dimension Dimension { get; }
 	}
 }

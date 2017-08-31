@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace PoeApiNet.Enums
 {
+	public enum Dimension
+	{
+		No,
+		Percent,
+		Tuple,
+		Seconds,
+	}
+
 	public enum StashType
 	{
 		Normal,
@@ -46,5 +54,20 @@ namespace PoeApiNet.Enums
 		Intelligence,
 		Dexterity,
 		White,
+	}
+
+	public enum PropertyType
+	{
+		Level = 5,
+		Quality = 6,
+		PhysicalDamage = 9,
+		ElementalDamage = 10,
+		CriticalStrikeChance = 12,
+		AttacksPerSecond = 13,
+		WeaponRange = 14,
+		ChanceToBlock = 15,
+		Armour = 16,
+		EvasionRating = 17,
+		EnergyShield = 18,
 	}
 }

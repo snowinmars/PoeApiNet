@@ -49,6 +49,7 @@
     <Compile Include="InternalResult.cs" />
     <Compile Include="InternalSocket.cs" />
     <Compile Include="InternalStash.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StashApi.cs" />
   </ItemGroup>
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\PoeApiNet.Entities\PoeApiNet.Entities.csproj">
       <Project>{91D2C2A3-B12D-4B80-8A27-DAF3A7EEB8C5}</Project>
       <Name>PoeApiNet.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PoeApiNet.Enums\PoeApiNet.Enums.csproj">
+      <Project>{E7BCF19D-8ACE-4E3F-8AA9-3D07C8EEC8E8}</Project>
+      <Name>PoeApiNet.Enums</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
